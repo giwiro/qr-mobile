@@ -6,13 +6,12 @@ import {
 } from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Provider} from 'react-redux';
-
 import {configureStore} from '@reduxjs/toolkit';
-import ScannerScreen, {
-  options as scannerOptions,
-} from './modules/scanner/screen';
 import ItemScreen, {options as itemOptions} from './modules/item/screen';
 import {rootReducer} from './modules';
+import ScannerScreen, {
+  options as screenOptions,
+} from './modules/scanner/screen';
 
 const {Navigator, Screen} = createStackNavigator();
 
@@ -31,7 +30,7 @@ export default function App(): JSX.Element {
           <Screen
             name="Scanner"
             component={ScannerScreen}
-            options={scannerOptions}
+            options={screenOptions}
           />
           <Screen name="Item" component={ItemScreen} options={itemOptions} />
         </Navigator>

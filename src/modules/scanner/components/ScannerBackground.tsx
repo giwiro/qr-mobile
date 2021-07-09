@@ -1,5 +1,5 @@
 import React, {ReactNode} from 'react';
-import {StyleSheet, View, Image, Text, Dimensions} from 'react-native';
+import {StyleSheet, View, Image, Text} from 'react-native';
 import vars from '../../../vars';
 
 import corner from '../../../../assets/scanner/corner.png';
@@ -13,6 +13,7 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     position: 'relative',
+    backgroundColor: 'black',
   },
   topText: {
     color: 'white',
@@ -67,22 +68,22 @@ const style = StyleSheet.create({
     position: 'absolute',
   },
   cornerTopLeft: {
-    top: vars.height * 0.38 - 10,
-    left: vars.width * 0.25 - 15,
+    top: vars.height * 0.38 - 1,
+    left: vars.width * 0.25 - 6,
   },
   cornerTopRight: {
-    top: vars.height * 0.38 - 10,
-    right: vars.width * 0.25 - 15,
+    top: vars.height * 0.38 - 1,
+    right: vars.width * 0.25 - 6,
     transform: [{rotate: '90deg'}],
   },
   cornerBottomRight: {
-    bottom: vars.height * 0.38 - 10,
-    right: vars.width * 0.25 - 15,
+    bottom: vars.height * 0.38 - 1,
+    right: vars.width * 0.25 - 6,
     transform: [{rotate: '180deg'}],
   },
   cornerBottomLeft: {
-    bottom: vars.height * 0.38 - 10,
-    left: vars.width * 0.25 - 15,
+    bottom: vars.height * 0.38 - 1,
+    left: vars.width * 0.25 - 6,
     transform: [{rotate: '270deg'}],
   },
 });
