@@ -1,8 +1,8 @@
 name: Check code
 
 on:
-  pull_request:
-    branches: [main, beta, alpha, internal, develop]
+  push:
+    branches: [develop]
 
   workflow_dispatch:
 
@@ -21,3 +21,5 @@ jobs:
         run: npm install
       - name: Check lint
         run: npm run lint
+      - name: Publish
+        run: npx expo publish --release-channel development --non-interactive
