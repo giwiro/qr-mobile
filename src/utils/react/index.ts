@@ -7,7 +7,7 @@ export type GenericAction<T> = Action & {
   payload: T;
 };
 
-export type GenericActionPayload = Record<string, any>;
+export type GenericActionPayload = Record<string, unknown>;
 
 export function useActions<T>(actions: T): T {
   const dispatch = useDispatch();

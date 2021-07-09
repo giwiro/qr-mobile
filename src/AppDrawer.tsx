@@ -1,8 +1,6 @@
 import React from 'react';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import ScannerScreen, {
-  options as scannerOptions,
-} from './modules/scanner/screen';
+import ScannerScreen from './modules/scanner/screen';
 
 const {Navigator, Screen} = createDrawerNavigator();
 
