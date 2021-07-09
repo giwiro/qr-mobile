@@ -9,6 +9,14 @@ export default {
       android: {fontFamily: 'Roboto'},
     }),
   },
+  colors: {
+    green: '#20bf55',
+    blue: '#0B4F6C',
+    lightBlue: '#01BAEF',
+    white: '#FBFBFF',
+    gray: '#757575',
+    darkGray: '#323232',
+  },
   width,
   height,
 };
