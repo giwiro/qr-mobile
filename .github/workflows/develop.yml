@@ -19,9 +19,13 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm install
-      - name: Install expo-cli
-        run: npm install expo-cli
       - name: Check lint
         run: npm run lint
+      - name: Install expo-cli
+        run: npm install expo-cli
+      - name: Expo authenticate
+        env:
+          EXPO_CLI_PASSWORD: ${{ env.EXPO_CLI_PASSWORD }}
+        run: npx expo login --non-interactive -u giwiro
       - name: Publish
         run: npx expo publish --release-channel development --non-interactive
