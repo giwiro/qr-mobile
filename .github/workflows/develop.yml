@@ -1,4 +1,4 @@
-name: Check code
+name: Publish develop to expo
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     environment: development
 
@@ -24,8 +24,6 @@ jobs:
         run: npm run lint
       - name: Install expo-cli
         run: npm install expo-cli
-      - name: Check env variables
-        run: node -e "console.log(process.env)"
       - name: Expo authenticate
         env:
           EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}

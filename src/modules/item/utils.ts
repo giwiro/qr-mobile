@@ -24,7 +24,7 @@ const urlRegex =
   /^(?:[a-zA-Z]+:\/\/) {2}[\w-]+(?:\.[\w.-]+)?[\w\-._~:/?#[\]@!$&'()*+,;=]+$/;
 
 export function getValueType(value: string): ValueType {
-  if (value.startsWith('WIFI:')) {
+  if (value.toLowerCase().startsWith('wifi:')) {
     const network = wifiNetworkRegex.exec(value);
     const ssid = wifiSSISDRegex.exec(value);
     const password = wifiPasswordSDRegex.exec(value);
@@ -50,22 +50,22 @@ export function getValueType(value: string): ValueType {
     return {type: 'URL', value};
   }
 
-  if (value.startsWith('tel:')) {
+  if (value.toLowerCase().startsWith('tel:')) {
     const phone = value.split('tel:')[1];
     return {type: 'PHONE', value, data: {phone}};
   }
 
-  if (value.startsWith('ethereum:')) {
+  if (value.toLowerCase().startsWith('ethereum:')) {
     const wallet = value.split('ethereum:')[1];
     return {type: 'ETHEREUM', value, data: {wallet}};
   }
 
-  if (value.startsWith('bitcoin:')) {
+  if (value.toLowerCase().startsWith('bitcoin:')) {
     const wallet = value.split('bitcoin:')[1];
     return {type: 'BITCOIN', value, data: {wallet}};
   }
 
-  if (value.startsWith('mailto:')) {
+  if (value.toLowerCase().startsWith('mailto:')) {
     return {type: 'MAIL', value};
   }
 

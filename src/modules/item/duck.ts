@@ -9,9 +9,7 @@ export type ItemAction = GenericActionPayload & {
   value?: string;
 };
 
-export const initialState: ItemState = {
-  value: 'https://google.com',
-};
+export const initialState: ItemState = {};
 
 const slice = createSlice({
   name: 'item',

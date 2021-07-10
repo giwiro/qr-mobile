@@ -13,6 +13,8 @@ const style = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     position: 'relative',
+  },
+  blackBackground: {
     backgroundColor: 'black',
   },
   topText: {
@@ -90,12 +92,15 @@ const style = StyleSheet.create({
 
 type Props = {
   children?: ReactNode;
+  blackBackground?: boolean;
 };
 
 export default function ScannerBackground(props: Props): JSX.Element {
-  const {children} = props;
+  const {children, blackBackground} = props;
   return (
-    <View style={style.container}>
+    <View
+      style={[style.container, blackBackground ? style.blackBackground : null]}
+    >
       <View style={style.imageWrap}>
         <Image source={corner} style={[style.corner, style.cornerTopLeft]} />
         <Image source={corner} style={[style.corner, style.cornerTopRight]} />
