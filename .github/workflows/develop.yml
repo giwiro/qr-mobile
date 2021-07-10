@@ -9,6 +9,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: development
 
     steps:
       - name: Checkout
@@ -23,9 +24,11 @@ jobs:
         run: npm run lint
       - name: Install expo-cli
         run: npm install expo-cli
+      - name: Check env variables
+        run: node -e "console.log(process.env)"
       - name: Expo authenticate
         env:
-          EXPO_CLI_PASSWORD: ${{ env.EXPO_CLI_PASSWORD }}
+          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
         run: npx expo login --non-interactive -u giwiro
       - name: Publish
         run: npx expo publish --release-channel development --non-interactive
