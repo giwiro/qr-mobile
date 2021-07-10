@@ -47,7 +47,7 @@ export default function ScannerScreen(): JSX.Element {
   if (!hasPermission) {
     return (
       <View style={style.container}>
-        <ScannerBackground />
+        <ScannerBackground blackBackground />
       </View>
     );
   }
