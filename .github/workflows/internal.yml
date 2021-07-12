@@ -1,8 +1,8 @@
-name: Publish develop to expo
+name: Publish develop to Play Store internal test
 
 on:
   push:
-    branches: [develop]
+    branches: [internal]
 
   workflow_dispatch:
 
@@ -28,7 +28,7 @@ jobs:
         env:
           EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
         run: npx expo login --non-interactive -u giwiro
-      - name: Publish
+      - name: Build APK
         run: npx expo build:android --release-channel development --non-interactive --no-publish
       - name: Write GCP fastlane access key
         run: echo $GCP_FASTLANE_JSON_KEY > json_key.json
