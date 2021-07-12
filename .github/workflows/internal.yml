@@ -1,0 +1,43 @@
+name: Publish develop to expo
+
+on:
+  push:
+    branches: [develop]
+
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
+      - name: Check lint
+        run: npm run lint
+      - name: Install expo-cli
+        run: npm install expo-cli
+      - name: Expo authenticate
+        env:
+          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
+        run: npx expo login --non-interactive -u giwiro
+      - name: Publish
+        run: npx expo build:android --release-channel development --non-interactive --no-publish
+      - name: Write GCP fastlane access key
+        run: echo $GCP_FASTLANE_JSON_KEY > json_key.json
+      - name: Setup ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true
+      - name: Download aab
+        run: curl -o app.apk "$(expo url:apk --non-interactive)"
+      - name: Upload to Play Store internal test
+        run: bundle exec fastlane supply --track 'internal' --json_key 'json_key.json' --package_name "com.giwiro.qr" --apk "app.apk" --skip_upload_metadata --skip_upload_images --skip_upload_screenshots
