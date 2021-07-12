@@ -111,8 +111,10 @@ export default function ScannerBackground(props: Props): JSX.Element {
         <Image source={corner} style={[style.corner, style.cornerBottomLeft]} />
       </View>
       <View style={style.layerTop}>
-        {blackBackground && (
+        {blackBackground ? (
           <Text style={[vars.text, style.topText]}>Has not permissions</Text>
+        ) : (
+          <Text style={[vars.text, style.topText]}>Has permissions</Text>
         )}
         <Text style={[vars.text, style.topText]}>Scan QR code</Text>
       </View>
