@@ -33,7 +33,7 @@ jobs:
       - name: Write GCP fastlane access key
         run: echo $GCP_FASTLANE_JSON_KEY > json_key.json
       - name: Download apk
-        run: curl -o app.apk "$(expo url:apk --non-interactive)"
+        run: curl -o app.apk "$(npx expo url:apk --non-interactive)"
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
