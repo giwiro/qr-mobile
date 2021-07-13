@@ -32,12 +32,12 @@ jobs:
         run: npx expo build:android --release-channel development --non-interactive --no-publish
       - name: Write GCP fastlane access key
         run: echo $GCP_FASTLANE_JSON_KEY > json_key.json
+      - name: Download apk
+        run: curl -o app.apk "$(expo url:apk --non-interactive)"
       - name: Setup ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7.2
           bundler-cache: true
-      - name: Download apk
-        run: curl -o app.apk "$(expo url:apk --non-interactive)"
       - name: Upload to Play Store internal test
         run: bundle exec fastlane supply --track 'internal' --json_key 'json_key.json' --package_name "com.giwiro.qr" --apk "app.apk" --skip_upload_metadata --skip_upload_images --skip_upload_screenshots
